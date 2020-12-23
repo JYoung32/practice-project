@@ -1,5 +1,5 @@
 
-# README Template
+# Storefront Project
 ## [This can be a Link Header](www.hyperlinkhere.com/) 
 ### Some Sub Text
 
