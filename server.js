@@ -1,5 +1,6 @@
 //Dependencies
 const express = require('express');
+//const routes = require('./routes');
 
 //Initialize express
 const app = express();
@@ -19,6 +20,9 @@ if (process.env.NODE_ENV === "production") {
 
 //Set up PORT
 const PORT = process.env.PORT || 3001;
+
+//Declare/define API routes
+//app.use(routes);
 
 //Have app listen
 app.listen(PORT);
