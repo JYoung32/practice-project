@@ -16,18 +16,10 @@ const App = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  //useEffect to update state to switch between loggedin/out?
-  // useEffect(() => {
-  //   isLoggedIn();
-  // })
-
-
   // Login Function
   const loginFormSubmit = (e) => {
     //stop form from submitting
     e.preventDefault();
-
-    console.log(loggedIn);
 
     //setup user data payload
     const userPayload = {
@@ -39,16 +31,9 @@ const App = () => {
     API.userLogin(userPayload).then(results => {
       console.log(results);
       if(results.data.loggedIn){
-        //console.log("userLogin route returned to front end!!!");
-        return (
-          isLoggedIn(results.data.loggedIn),
-          //looking for a true value for line46
-          console.log(loggedIn)
-        // window.location.href = '/';
-        // console.log(loggedIn);
-        )
+        //if the use successfully logs in, set loggedIn state to true
+        return isLoggedIn(results.data.loggedIn)
       }      
-      
     }).catch(error => {
       if (error) throw error;
     })
@@ -57,13 +42,9 @@ const App = () => {
   //function to check login state
   const isLoggedIn = (loginFlag) => {
     if(!loggedIn){
-      console.log(loginFlag)
-      return (
-        setLoggedIn(loginFlag),
-        console.log(loggedIn)
-      );
+      return setLoggedIn(loginFlag)
     } else {
-      console.log("not logged in or already logged in")
+      console.log("not logged in")
     }
   }
 
@@ -71,16 +52,28 @@ const App = () => {
     <Router>
       <Navbar />
       <Switch>
-        <Route path='/login' render={() =>
-          <Login
+        <Route 
+          path='/login' 
+          render={() => <Login
             loginFormSubmit={loginFormSubmit}
             email={email}
             setEmail={setEmail}
             password={password}
             setPassword={setPassword} />
-        } />
+          } 
+        />
         <Route path='/signup' render={() => <Signup />} />
-        <Route path='/' exact component={ loggedIn ? Homepage : Login} />
+        <Route 
+          path='/' 
+          render={ loggedIn ? 
+          () => <Homepage /> : (props) => <Login {...props} 
+            loginFormSubmit={loginFormSubmit}
+            email={email}
+            setEmail={setEmail}
+            password={password}
+            setPassword={setPassword} /> 
+          } 
+        />
       </Switch>
     </Router>
   );
