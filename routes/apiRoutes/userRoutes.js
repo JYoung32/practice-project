@@ -7,7 +7,10 @@ const passport = require('../../config/passport');
 // If the user has valid login credentials, send them to the members page.
 // Otherwise the user will be sent an error
 router.post('/login', passport.authenticate('local'), function (req, res) {
-    res.json(req.user);
+    res.json({
+        user: req.user,
+        loggedIn: true
+    });
     // console.log('login route after res.json');
 });
 
