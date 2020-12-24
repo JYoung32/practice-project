@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import API from '../../utils/API';
 
 function Signup(props) {
 
@@ -24,6 +25,11 @@ function Signup(props) {
         }
 
         console.log(userPayload);
+        API.userSignup(userPayload).then( results => {
+            console.log("userSignup route returned to front end!!!");
+        }).catch( error => {
+            if(error) throw error;
+        })
 
     }
 
