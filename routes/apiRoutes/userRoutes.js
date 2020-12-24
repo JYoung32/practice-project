@@ -8,6 +8,7 @@ const passport = require('../../config/passport');
 // Otherwise the user will be sent an error
 router.post('/login', passport.authenticate('local'), function (req, res) {
     res.json(req.user);
+    // console.log('login route after res.json');
 });
 
 // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
