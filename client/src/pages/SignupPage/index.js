@@ -24,7 +24,7 @@ function Signup(props) {
             password: password
         }
 
-        console.log(userPayload);
+        //console.log(userPayload);
         API.userSignup(userPayload).then( results => {
             console.log("userSignup route returned to front end!!!");
         }).catch( error => {
@@ -35,6 +35,9 @@ function Signup(props) {
 
     return (
         <Container>
+            <div>
+                This is Signup Page
+            </div>
             <Form onSubmit={signupFormSubmit}>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
