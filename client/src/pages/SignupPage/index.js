@@ -63,7 +63,11 @@ function Signup(props) {
                 </Form.Group>
 
                 <Button variant="primary" type="submit">
-                    Submit
+                    Sign up
+                </Button>
+
+                <Button variant="primary" type="onClick" href="/">
+                    Login
                 </Button>
             </Form>
         </Container>

@@ -2,38 +2,8 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-//import API from '../../utils/API';
 
 function Login (props) {
-    
-    // //setup hooks
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
-
-    // const loginFormSubmit = (e) => {
-    //     //stop form from submitting
-    //     e.preventDefault();
-
-    //     //use hooks to set state
-    //     setEmail('');
-    //     setPassword('');
-
-    //     //setup user data payload
-    //     const userPayload = {
-    //         email: email,
-    //         password: password
-    //     }
-
-    //     //console.log(userPayload);
-    //     API.userLogin(userPayload).then( results => {
-    //         console.log(results);
-    //         console.log("userLogin route returned to front end!!!");
-    //         //window.location.href = '/';
-    //     }).catch( error => {
-    //         if(error) throw error;
-    //     })
-
-    // }
 
     return(
         <Container>
@@ -65,7 +35,10 @@ function Login (props) {
                 </Form.Group>
 
                 <Button variant="primary" type="onClick" onClick={(e) => props.loginFormSubmit(e)}>
-                    Submit
+                    Login
+                </Button>
+                <Button variant="primary" type="onClick" href="/signup">
+                    Sign Up
                 </Button>
             </Form>
         </Container>

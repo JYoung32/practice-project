@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
@@ -35,7 +35,7 @@ const App = () => {
         return isLoggedIn(results.data.loggedIn)
       }      
     }).catch(error => {
-      if (error) throw error;
+      if(error) throw error;
     })
   }
 
@@ -50,9 +50,9 @@ const App = () => {
 
   return (
     <Router>
-      <Navbar />
+      <Navbar loggedIn={loggedIn}/>
       <Switch>
-        <Route 
+        {/* <Route 
           path='/login' 
           render={() => <Login
             loginFormSubmit={loginFormSubmit}
@@ -61,7 +61,7 @@ const App = () => {
             password={password}
             setPassword={setPassword} />
           } 
-        />
+        /> */}
         <Route path='/signup' render={() => <Signup />} />
         <Route 
           path='/' 
