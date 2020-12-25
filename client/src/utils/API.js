@@ -8,5 +8,9 @@ export default {
 
     userLogin: function(loginPayload) {
         return axios.post('/api/login', loginPayload)
+    },
+
+    getUserInfo: function() {
+        return axios.get('/api/user_data')
     }
 }

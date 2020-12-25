@@ -27,12 +27,12 @@ router.post('/signup', function (req, res) {
         firstName: req.body.firstName,
         lastName: req.body.lastName
     })
-        .then(function () {
-            console.log("complete api route...return to react!");
-        })
-        .catch(function (err) {
-            res.status(401).json(err);
-        });
+    .then(function () {
+        console.log("complete api route...return to react!");
+    })
+    .catch(function (err) {
+        res.status(401).json(err);
+    });
 });
 
 // Route for logging user out
@@ -51,7 +51,9 @@ router.get('/user_data', function (req, res) {
         // Sending back a password, even a hashed password, isn't a good idea
         res.json({
             email: req.user.email,
-            id: req.user.id
+            id: req.user.id,
+            firstName: req.user.firstName,
+            lastName: req.user.lastName
         });
     }
 });
