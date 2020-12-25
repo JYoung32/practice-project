@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Homepage from './pages/Homepage';
 import Login from './pages/LoginPage';
 import Signup from './pages/SignupPage';
+import ItemCard from './components/ItemCard';
 import API from './utils/API';
 
 const App = () => {
@@ -15,6 +16,9 @@ const App = () => {
   //hooks for login form
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  //set user object to localstorage??
+  //useEffect to check for user object and persist loggedIn state??
 
   // Login Function
   const loginFormSubmit = (e) => {
@@ -62,6 +66,7 @@ const App = () => {
             setPassword={setPassword} />
           } 
         /> */}
+        <Route path='/itemShop' render={() => <ItemCard />} />
         <Route path='/signup' render={() => <Signup />} />
         <Route 
           path='/' 

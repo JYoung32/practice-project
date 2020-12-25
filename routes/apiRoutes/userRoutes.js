@@ -47,6 +47,7 @@ router.get('/user_data', function (req, res) {
         // The user is not logged in, send back an empty object
         res.json({});
     } else {
+        console.log(req.user);
         // Otherwise send back the user's email and id
         // Sending back a password, even a hashed password, isn't a good idea
         res.json({
@@ -57,5 +58,20 @@ router.get('/user_data', function (req, res) {
         });
     }
 });
+
+router.get('/item_info', function (req, res) {
+    if (!req.user){
+        // The user is not logged in, send back an empty object
+        res.json({});
+    } else {
+        console.log("logged in item info route, if you see this logged in worked?")
+        res.json({
+            email: req.user.email,
+            id: req.user.id,
+            firstName: req.user.firstName,
+            lastName: req.user.lastName
+        });
+    }
+})
 
 module.exports = router;
