@@ -25,6 +25,8 @@ function Signup(props) {
             lastName: lastName
         }
 
+        console.log(userPayload);
+
         if(password === confirmPassword) {
 
             //use hooks to clear values
